@@ -1,0 +1,48 @@
+# finding and extracting contents of the file
+def file_contents(filename):
+    try:
+        with open(filename) as f_obj:
+            contents = f_obj.read()
+            return contents;
+    except FileNotFoundError:
+        msg = "Sorry, the file " + filename + " does not exist."
+        print(msg)
+
+file_contents = file_contents('myFile.txt')
+
+#coutning words in the file
+total_words = len(file_contents.split())
+print("Number of words are : " , total_words)
+
+#number of lines in the file
+total_lines = 1
+for i in file_contents:
+    if i == "\n":
+        total_lines += 1
+print("Number of lines :", total_lines)
+
+#number of non-space character & spaces in the file
+non_space = 0
+space = 0
+for i in file_contents:
+    if i != " " and i != "\n":
+        non_space += 1
+    elif i == " ":
+        space += 1
+print("Number of non-space characters :", non_space)
+print("Number of spaces :", space)
+
+# number of tabs in the file
+tabs = 0
+for i in file_contents:
+    if i == "\t":
+        tabs +=1
+print("Number of tabs :", tabs)
+
+# number of paragraphs in the file
+find_para = file_contents.splitlines()
+para = 0
+for i in find_para:
+    if i == '':
+        para += 1
+print("Number of paragraphs :", para)
